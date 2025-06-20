@@ -5,41 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contactanos</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="Tiempo.png" type="image/png">
 </head>
 <body>
     <div class="theme-switcher">
         <button id="themeToggle">Cambiar Tema</button>
     </div>
 
-    <form action="https://formsubmit.co/codenest365@gmail.com" method="POST">
-
-        <h2>Contactanos</h2>
-
-        <div class="input-group">
-
-            <label for="name">Nombre</label>
-            <input type="text" name="name" id="name" placeholder="Nombre" required> 
-
-            <label for="phone">Telefono</label>
-            <input type="tel" name="phone" id="phone" placeholder="Telefono" required> 
-
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Email" required> 
-
-            <label for="message">Mensaje</label>
-            <textarea name="message" id="message" cols="30" rows="5" placeholder="Mensaje" required></textarea> 
-
-            <div class="form-txt">
-                <a href="politica-privacidad.html">Política de privacidad</a> &nbsp; 
-                <a href="terminos-condiciones.html">Términos y condiciones</a>
-            </div>
-
-            <input class="btn" type="submit" value="Enviar">
-
-            <input type="hidden" name="_next" value="https://codigotrebor.github.io/web//gracias.html"> 
-            <input type="hidden" name="_captcha" value="false"> 
+    <form action="https://formsubmit.co/codenest365@gmail.com" method="POST" class="form-with-image">
+        
+        <div class="image-side">
+            <img src="persona.png" alt="Persona usando una laptop" class="form-image">
         </div>
 
+        <div class="form-content">
+            <h2>Contactanos</h2>
+
+            <div class="input-group">
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name" placeholder="Nombre" required> 
+
+                <label for="phone">Telefono</label>
+                <input type="tel" name="phone" id="phone" placeholder="Telefono" required> 
+
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email" required> 
+
+                <label for="message">Mensaje</label>
+                <textarea name="message" id="message" cols="30" rows="5" placeholder="Mensaje" required></textarea> 
+
+                <div class="form-txt">
+                    <a href="politica-privacidad.html">Política de privacidad</a> &nbsp; 
+                    <a href="terminos-condiciones.html">Términos y condiciones</a>
+                </div>
+
+                <input class="btn" type="submit" value="Enviar">
+
+                <input type="hidden" name="_next" value="https://codigotrebor.github.io/web//gracias.html"> 
+                <input type="hidden" name="_captcha" value="false"> 
+            </div>
+        </div>
     </form>
 
     <script src="theme-switcher.js"></script> 
