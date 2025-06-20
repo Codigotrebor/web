@@ -1,0 +1,246 @@
+/* Definición de variables CSS para temas */
+:root {
+    /* Tema Oscuro (Valores por defecto) */
+    --body-bg: #1a1a1a; /* Fondo principal oscuro */
+    --container-bg: #282828; /* Fondo del formulario/contenedor oscuro */
+    --text-color: #f0f0f0; /* Color de texto general claro */
+    --heading-color: #b08d57; /* Títulos en dorado */
+    --label-color: #f0f0f0; /* Color de los labels en tema oscuro */
+    --input-bg: #333333; /* Fondo de inputs oscuro */
+    --input-border: #444444; /* Borde de inputs oscuro */
+    --input-placeholder: #999999; /* Placeholder gris oscuro */
+    --link-color: #b08d57; /* Enlaces en dorado */
+    --button-bg: #b08d57; /* Fondo de botón dorado */
+    --button-text-color: #1a1a1a; /* Texto de botón oscuro */
+    --button-hover-bg: #c9a46b; /* Dorado más claro al pasar el ratón */
+    --border-color: #333333; /* Color de borde general para contenedores */
+    --box-shadow-color: rgba(0, 0, 0, 0.4); /* Sombra para el contenedor principal */
+    --button-shadow-color: rgba(176, 141, 87, 0.4); /* Sombra para el botón dorado */
+    --input-focus-shadow-rgb: 176, 141, 87; /* Color RGB para la sombra del input en focus (dorado) */
+}
+
+/* Tema Claro (cuando la clase 'light-theme' está en el body) */
+body.light-theme {
+    --body-bg: #e0f2f7; /* Fondo azul muy claro */
+    --container-bg: #ffffff; /* Fondo del formulario/contenedor blanco */
+    --text-color: #333333; /* Color de texto general gris oscuro */
+    --heading-color: #333333; /* Títulos en gris oscuro */
+    --label-color: #555; /* Color de los labels en tema claro */
+    --input-bg: #f7f7f7; /* Fondo de inputs gris muy claro */
+    --input-border: #e0e0e0; /* Borde de inputs sutil */
+    --input-placeholder: #a0a0a0; /* Placeholder gris */
+    --link-color: #007bff; /* Enlaces color azul */
+    --button-bg: #6ed070; /* Color verde del botón */
+    --button-text-color: #ffffff; /* Texto del botón blanco */
+    --button-hover-bg: #5cb85f; /* Verde un poco más oscuro al pasar el ratón */
+    --border-color: #e0e0e0; /* Color de borde general */
+    --box-shadow-color: rgba(0, 0, 0, 0.1); /* Sombra más suave para el contenedor principal */
+    --button-shadow-color: rgba(110, 208, 112, 0.4); /* Sombra para el botón verde */
+    --input-focus-shadow-rgb: 110, 208, 112; /* Color RGB para la sombra del input en focus (verde) */
+}
+
+
+/* GENERALES Y BODY */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente un poco más moderna */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el formulario */
+    align-items: center; /* Centra verticalmente el formulario */
+    margin: 0; /* Elimina el margen por defecto del body */
+    background-color: var(--body-bg); /* Usa la variable */
+    color: var(--text-color); /* Usa la variable */
+    overflow: auto; /* Permite scroll si el contenido es más grande que la pantalla */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para el cambio de tema */
+}
+
+/* FORMULARIO PRINCIPAL (EL CUADRO DEL CONTACTO) */
+form {
+    background-color: var(--container-bg); /* Usa la variable */
+    padding: 40px 50px; /* Relleno interno */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 8px 30px var(--box-shadow-color); /* Usa la variable para la sombra */
+    text-align: left; /* Alinea el texto a la izquierda dentro del formulario */
+    width: 100%; /* Ocupa el 100% del espacio disponible */
+    max-width: 500px; /* Ancho máximo para el formulario */
+    box-sizing: border-box; /* Incluye padding y border en el ancho/alto */
+    position: relative; /* Para posicionar elementos internos, como el posible ícono */
+    border: 1px solid var(--border-color); /* Usa la variable para el borde */
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+}
+
+/* Título "Contactanos" */
+h2 {
+    color: var(--heading-color); /* Usa la variable */
+    font-size: 32px; /* Tamaño de fuente más grande */
+    margin-bottom: 30px; /* Espacio debajo del título */
+    text-align: center; /* Centra el título "Contactanos" */
+    font-weight: 600;
+    transition: color 0.3s ease; /* Transición suave */
+}
+
+/* GRUPOS DE ENTRADA (LABEL + INPUT/TEXTAREA) */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; /* Espacio entre cada grupo */
+}
+
+label {
+    color: var(--label-color); /* Usa la variable */
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8px; /* Espacio entre label y input */
+    transition: color 0.3s ease; /* Transición suave */
+}
+
+input,
+textarea {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 14px 18px; /* Relleno interno */
+    border-radius: 8px; /* Bordes redondeados */
+    margin-bottom: 5px; /* Espacio extra para asegurar separación */
+    background-color: var(--input-bg); /* Usa la variable */
+    border: 1px solid var(--input-border); /* Usa la variable */
+    color: var(--text-color); /* Usa la variable para el color del texto dentro del input */
+    outline: none; /* Quita el contorno al enfocar */
+    font-size: 16px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Transición suave */
+    box-sizing: border-box; /* Importante para que padding no agrande el input */
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--button-bg); /* Borde verde/dorado al enfocar */
+    box-shadow: 0 0 0 3px rgba(var(--input-focus-shadow-rgb), 0.2); /* Sombra suave al enfocar */
+}
+
+textarea {
+    resize: vertical; /* Permite redimensionar solo verticalmente */
+    min-height: 120px; /* Altura mínima para el área de mensaje */
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--input-placeholder); /* Usa la variable */
+    opacity: 1; /* Asegura que el color sea visible */
+}
+
+/* ENLACES DE POLÍTICA Y TÉRMINOS */
+.form-txt {
+    margin-top: 25px; /* Espacio encima de los enlaces */
+    margin-bottom: 30px; /* Espacio debajo de los enlaces */
+    text-align: center;
+    display: flex; /* Usamos flexbox para alinear */
+    justify-content: center; /* Centra los enlaces */
+    gap: 20px; /* Espacio entre ellos */
+    flex-wrap: wrap; /* Permite que los enlaces pasen a la siguiente línea si no hay espacio */
+    font-size: 14px;
+}
+
+.form-txt a {
+    color: var(--link-color); /* Usa la variable */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease; /* Transición suave */
+}
+
+.form-txt a:hover {
+    text-decoration: underline;
+}
+
+
+/* BOTÓN DE ENVIAR */
+.btn {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--button-text-color); /* Usa la variable */
+    border: none;
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: var(--button-bg); /* Usa la variable */
+    padding: 15px 25px; /* Relleno */
+    width: auto; /* Se ajusta al contenido, no al 100% */
+    min-width: 150px; /* Ancho mínimo para el botón */
+    cursor: pointer;
+    box-shadow: 0 4px 15px var(--button-shadow-color); /* Usa la variable para la sombra */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease; /* Transición suave */
+    display: block; /* Para que ocupe su propia línea */
+    margin-left: auto; /* Centra el botón horizontalmente */
+    margin-right: auto; /* Centra el botón horizontalmente */
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background-color: var(--button-hover-bg); /* Usa la variable */
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+    box-shadow: 0 6px 20px var(--button-shadow-color); /* Ajuste de sombra en hover */
+}
+
+.btn:active {
+    transform: translateY(0); /* Vuelve a su posición original al hacer clic */
+}
+
+/* Estilos para el botón de cambio de tema */
+.theme-switcher {
+    position: fixed; /* Posición fija en la ventana */
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.theme-switcher button {
+    background-color: var(--container-bg); /* Fondo del botón de cambio de tema */
+    color: var(--text-color); /* Color del texto del botón */
+    border: 1px solid var(--border-color); /* Borde del botón */
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Transición suave */
+}
+
+.theme-switcher button:hover {
+    background-color: var(--input-bg); /* Cambio de fondo al pasar el ratón */
+}
+
+
+/* MEDIA QUERIES para responsividad */
+@media (max-width: 768px) {
+    form {
+        padding: 30px;
+        margin: 20px; /* Añade margen en pantallas pequeñas */
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    .btn {
+        width: 100%; /* El botón ocupa todo el ancho en móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    form {
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    input, textarea {
+        padding: 12px 15px;
+        font-size: 15px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+    .form-txt {
+        font-size: 13px;
+        gap: 10px;
+    }
+}

@@ -1,0 +1,146 @@
+@import url("index.css"); /* Asegúrate que la ruta es correcta a tu CSS principal con variables */
+
+/* Estilos de la página de Gracias, usando las variables definidas en contactanos.css */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--body-bg); /* Usa la variable */
+    color: var(--text-color); /* Usa la variable */
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+.message-container {
+    background-color: var(--container-bg); /* Usa la variable */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px var(--box-shadow-color); /* Usa la variable */
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color); /* Usa la variable */
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+    /* ESTILOS DE ANIMACIÓN */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSlideUp 0.8s ease-out forwards;
+}
+
+/* Definición de la animación */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para la imagen del reloj de arena */
+.icon-image {
+    width: 100px;
+    height: auto;
+    margin-bottom: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    color: var(--heading-color); /* Usa la variable */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+p {
+    color: var(--text-color); /* Usa la variable */
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    transition: color 0.3s ease;
+}
+
+a {
+    background-color: var(--button-bg); /* Usa la variable */
+    color: var(--button-text-color); /* Usa la variable */
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+a:hover {
+    background-color: var(--button-hover-bg); /* Usa la variable */
+}
+
+/* Estilos para el botón de cambio de tema (puedes mantenerlos aquí aunque no haya botón visible,
+   o eliminarlos si el .theme-switcher nunca aparecerá en esta página. Es inofensivo si se quedan). */
+.theme-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    /* display: none;  <-- Puedes añadir esto si no quieres que ni siquiera ocupe espacio */
+}
+
+.theme-switcher button {
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.theme-switcher button:hover {
+    background-color: var(--input-bg);
+}
+
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .message-container {
+        padding: 30px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    .icon-image {
+        width: 80px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .message-container {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    .icon-image {
+        width: 70px;
+    }
+    p {
+        font-size: 1em;
+    }
+    a {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
