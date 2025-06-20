@@ -54,95 +54,126 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para el cambio de tema */
 }
 
-/* FORMULARIO PRINCIPAL (EL CUADRO DEL CONTACTO) */
-form {
+/* FORMULARIO PRINCIPAL (EL CUADRO DEL CONTACTO) - MODIFICADO PARA FLEXBOX */
+form.form-with-image { /* Apunta a la nueva clase en el HTML */
+    display: flex; /* Activa Flexbox para el formulario */
+    flex-direction: row-reverse; /* Invierte el orden para poner la imagen a la derecha */
+    max-width: 950px; /* <--- AUMENTADO ESTE VALOR PARA HACER EL CUADRO MÁS GRANDE */
+    align-items: center; /* Alinea verticalmente los elementos hijos (imagen y contenido) */
     background-color: var(--container-bg); /* Usa la variable */
-    padding: 40px 50px; /* Relleno interno */
+    padding: 0; /* Quitamos el padding del contenedor principal, lo aplicaremos a las sub-secciones */
     border-radius: 15px; /* Bordes redondeados */
     box-shadow: 0 8px 30px var(--box-shadow-color); /* Usa la variable para la sombra */
     text-align: left; /* Alinea el texto a la izquierda dentro del formulario */
     width: 100%; /* Ocupa el 100% del espacio disponible */
-    max-width: 500px; /* Ancho máximo para el formulario */
     box-sizing: border-box; /* Incluye padding y border en el ancho/alto */
-    position: relative; /* Para posicionar elementos internos, como el posible ícono */
+    position: relative;
     border: 1px solid var(--border-color); /* Usa la variable para el borde */
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+    overflow: hidden; /* Asegura que los bordes redondeados se apliquen correctamente si la imagen sobresale */
 }
+
+/* Estilos para el contenedor de la imagen al lado */
+.image-side {
+    flex: 1; /* La imagen ocupará una parte del espacio flexible */
+    padding: 20px; /* Espacio alrededor de la imagen */
+    text-align: center; /* Centra la imagen dentro de su contenedor */
+    display: flex; /* Para centrar la imagen perfectamente si es más pequeña */
+    justify-content: center;
+    align-items: center;
+    min-width: 300px; /* Ajustado ligeramente, puedes probar 250px o más si es necesario */
+}
+
+.form-image {
+    max-width: 100%; /* La imagen no excederá el ancho de su contenedor */
+    height: auto;
+    border-radius: 10px; /* Opcional: bordes redondeados para la imagen */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave para la imagen */
+}
+
+/* Estilos para el contenedor del contenido del formulario (campos, título, etc.) */
+.form-content {
+    flex: 1.5; /* El contenido del formulario ocupará un poco más de espacio */
+    padding: 40px 50px; /* Padding para el contenido del formulario */
+    box-sizing: border-box;
+    min-width: 350px; /* Ajustado ligeramente, puedes probar 300px o más si es necesario */
+}
+
 
 /* Título "Contactanos" */
 h2 {
-    color: var(--heading-color); /* Usa la variable */
-    font-size: 32px; /* Tamaño de fuente más grande */
-    margin-bottom: 30px; /* Espacio debajo del título */
-    text-align: center; /* Centra el título "Contactanos" */
+    color: var(--heading-color);
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-align: center;
     font-weight: 600;
-    transition: color 0.3s ease; /* Transición suave */
+    transition: color 0.3s ease;
 }
 
 /* GRUPOS DE ENTRADA (LABEL + INPUT/TEXTAREA) */
 .input-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px; /* Espacio entre cada grupo */
+    margin-bottom: 20px;
 }
 
 label {
-    color: var(--label-color); /* Usa la variable */
+    color: var(--label-color);
     font-size: 15px;
     font-weight: 500;
-    margin-bottom: 8px; /* Espacio entre label y input */
-    transition: color 0.3s ease; /* Transición suave */
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
 }
 
 input,
 textarea {
-    width: 100%; /* Ocupa todo el ancho disponible */
-    padding: 14px 18px; /* Relleno interno */
-    border-radius: 8px; /* Bordes redondeados */
-    margin-bottom: 5px; /* Espacio extra para asegurar separación */
-    background-color: var(--input-bg); /* Usa la variable */
-    border: 1px solid var(--input-border); /* Usa la variable */
-    color: var(--text-color); /* Usa la variable para el color del texto dentro del input */
-    outline: none; /* Quita el contorno al enfocar */
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-color);
+    outline: none;
     font-size: 16px;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Transición suave */
-    box-sizing: border-box; /* Importante para que padding no agrande el input */
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    box-sizing: border-box;
 }
 
 input:focus,
 textarea:focus {
-    border-color: var(--button-bg); /* Borde verde/dorado al enfocar */
-    box-shadow: 0 0 0 3px rgba(var(--input-focus-shadow-rgb), 0.2); /* Sombra suave al enfocar */
+    border-color: var(--button-bg);
+    box-shadow: 0 0 0 3px rgba(var(--input-focus-shadow-rgb), 0.2);
 }
 
 textarea {
-    resize: vertical; /* Permite redimensionar solo verticalmente */
-    min-height: 120px; /* Altura mínima para el área de mensaje */
+    resize: vertical;
+    min-height: 120px;
 }
 
 input::placeholder,
 textarea::placeholder {
-    color: var(--input-placeholder); /* Usa la variable */
-    opacity: 1; /* Asegura que el color sea visible */
+    color: var(--input-placeholder);
+    opacity: 1;
 }
 
 /* ENLACES DE POLÍTICA Y TÉRMINOS */
 .form-txt {
-    margin-top: 25px; /* Espacio encima de los enlaces */
-    margin-bottom: 30px; /* Espacio debajo de los enlaces */
+    margin-top: 25px;
+    margin-bottom: 30px;
     text-align: center;
-    display: flex; /* Usamos flexbox para alinear */
-    justify-content: center; /* Centra los enlaces */
-    gap: 20px; /* Espacio entre ellos */
-    flex-wrap: wrap; /* Permite que los enlaces pasen a la siguiente línea si no hay espacio */
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
     font-size: 14px;
 }
 
 .form-txt a {
-    color: var(--link-color); /* Usa la variable */
+    color: var(--link-color);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease; /* Transición suave */
+    transition: color 0.3s ease;
 }
 
 .form-txt a:hover {
@@ -154,62 +185,77 @@ textarea::placeholder {
 .btn {
     font-size: 18px;
     font-weight: 600;
-    color: var(--button-text-color); /* Usa la variable */
+    color: var(--button-text-color);
     border: none;
-    border-radius: 8px; /* Bordes redondeados */
-    background-color: var(--button-bg); /* Usa la variable */
-    padding: 15px 25px; /* Relleno */
-    width: auto; /* Se ajusta al contenido, no al 100% */
-    min-width: 150px; /* Ancho mínimo para el botón */
+    border-radius: 8px;
+    background-color: var(--button-bg);
+    padding: 15px 25px;
+    width: auto;
+    min-width: 150px;
     cursor: pointer;
-    box-shadow: 0 4px 15px var(--button-shadow-color); /* Usa la variable para la sombra */
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease; /* Transición suave */
-    display: block; /* Para que ocupe su propia línea */
-    margin-left: auto; /* Centra el botón horizontalmente */
-    margin-right: auto; /* Centra el botón horizontalmente */
+    box-shadow: 0 4px 15px var(--button-shadow-color);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
 
 .btn:hover {
-    background-color: var(--button-hover-bg); /* Usa la variable */
-    transform: translateY(-2px); /* Pequeño efecto de elevación */
-    box-shadow: 0 6px 20px var(--button-shadow-color); /* Ajuste de sombra en hover */
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--button-shadow-color);
 }
 
 .btn:active {
-    transform: translateY(0); /* Vuelve a su posición original al hacer clic */
+    transform: translateY(0);
 }
 
 /* Estilos para el botón de cambio de tema */
 .theme-switcher {
-    position: fixed; /* Posición fija en la ventana */
+    position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    z-index: 1000;
 }
 
 .theme-switcher button {
-    background-color: var(--container-bg); /* Fondo del botón de cambio de tema */
-    color: var(--text-color); /* Color del texto del botón */
-    border: 1px solid var(--border-color); /* Borde del botón */
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Transición suave */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .theme-switcher button:hover {
-    background-color: var(--input-bg); /* Cambio de fondo al pasar el ratón */
+    background-color: var(--input-bg);
 }
 
 
 /* MEDIA QUERIES para responsividad */
 @media (max-width: 768px) {
-    form {
+    form.form-with-image {
+        flex-direction: column; /* En pantallas pequeñas, la imagen seguirá encima del formulario */
+        padding: 0;
+        margin: 20px;
+    }
+
+    .image-side {
+        width: 100%;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--border-color); /* Separador opcional */
+        border-radius: 15px 15px 0 0; /* Bordes redondeados solo arriba */
+    }
+
+    .form-content {
         padding: 30px;
-        margin: 20px; /* Añade margen en pantallas pequeñas */
+        width: 100%;
+        border-radius: 0 0 15px 15px; /* Bordes redondeados solo abajo */
     }
 
     h2 {
@@ -217,12 +263,12 @@ textarea::placeholder {
     }
 
     .btn {
-        width: 100%; /* El botón ocupa todo el ancho en móviles */
+        width: 100%;
     }
 }
 
 @media (max-width: 480px) {
-    form {
+    .form-content {
         padding: 25px;
     }
 
