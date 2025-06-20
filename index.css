@@ -42,19 +42,19 @@ body.light-theme {
 
 /* GENERALES Y BODY */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente un poco más moderna */
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    background-color: var(--body-bg);
-    color: var(--text-color);
-    overflow: auto;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    justify-content: center; /* Centra horizontalmente el formulario */
+    align-items: center; /* Centra verticalmente el formulario */
+    margin: 0; /* Elimina el margen por defecto del body */
+    background-color: var(--body-bg); /* Usa la variable */
+    color: var(--text-color); /* Usa la variable */
+    overflow: auto; /* Permite scroll si el contenido es más grande que la pantalla */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave para el cambio de tema */
 }
 
-/* FORMULARIO PRINCIPAL (EL CUADRO DEL CONTACTO) - MODIFICADO PARA FLEXBOX */
+/* FORMULARIO PRINCIPAL (EL CUADRO DEL CONTACTO) */
 form.form-with-image {
     display: flex;
     flex-direction: row-reverse; /* Imagen a la derecha en escritorio */
@@ -82,7 +82,7 @@ form.form-with-image {
     justify-content: center;
     align-items: center;
     min-width: 300px; /* Ancho mínimo para la columna de la imagen en escritorio */
-    /* background-color: lightblue; /* Temporal para depuración */
+    border-radius: 15px 0 0 15px; /* Bordes redondeados solo a la izquierda para la imagen */
 }
 
 .form-image {
@@ -90,16 +90,16 @@ form.form-with-image {
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    display: block; /* Asegura que la imagen sea un bloque para controlar su espaciado */
+    display: block;
 }
 
-/* Estilos para el contenedor del contenido del formulario (campos, título, etc.) */
+/* Estilos para el contenedor del contenido del formulario */
 .form-content {
     flex: 1.5; /* Ocupa más espacio que la imagen */
     padding: 40px 50px; /* Padding para el contenido del formulario */
     box-sizing: border-box;
     min-width: 350px; /* Ancho mínimo para la columna del formulario en escritorio */
-    /* background-color: lightgreen; /* Temporal para depuración */
+    border-radius: 0 15px 15px 0; /* Bordes redondeados solo a la derecha para el formulario */
 }
 
 
@@ -241,37 +241,27 @@ textarea::placeholder {
 
 /* MEDIA QUERIES para responsividad */
 @media (max-width: 768px) {
+    /* Oculta la imagen en pantallas pequeñas */
+    .image-side {
+        display: none; 
+    }
+
     body {
-        /* Permite que el body tenga un poco de padding en los lados en móviles */
-        padding: 0 15px; 
+        padding: 0 15px; /* Pequeño padding lateral al body en móviles */
     }
 
     form.form-with-image {
-        flex-direction: column; /* La imagen irá encima del formulario en móvil */
-        padding: 0; /* Asegurarse de que el padding lo manejen image-side y form-content */
+        flex-direction: column; /* El formulario ocupa todo el ancho y los elementos se apilan */
+        padding: 30px; /* Añade padding al formulario cuando no hay imagen al lado */
         margin: 20px auto; /* Centrar el formulario y añadir margen vertical */
         max-width: 100%; /* Ocupa el 100% del ancho disponible en pantallas pequeñas */
-        border-radius: 15px; /* Bordes redondeados en todo el formulario en móvil */
-    }
-
-    .image-side {
-        width: 100%; /* Ocupa todo el ancho */
-        padding: 20px; /* Mantener padding interno */
-        margin-bottom: 0; /* Eliminar margen para que la imagen se pegue al formulario */
-        border-bottom: none; /* Eliminar el separador si se añadió antes */
-        border-radius: 15px 15px 0 0; /* Bordes redondeados solo arriba para la imagen */
-        order: -1; /* Mueve la imagen al principio visualmente */
-    }
-
-    .form-image {
-        max-width: 80%; /* Hacer la imagen un poco más pequeña para que quepa bien en móviles */
-        margin: 0 auto; /* Centrar la imagen dentro de su contenedor */
+        border-radius: 15px; /* Bordes redondeados completos para el formulario en móvil */
     }
 
     .form-content {
-        padding: 30px; /* Reduce el padding en pantallas pequeñas */
-        width: 100%; /* Ocupa todo el ancho */
-        border-radius: 0 0 15px 15px; /* Bordes redondeados solo abajo para el contenido */
+        padding: 0; /* El padding ya está en el formulario principal */
+        width: 100%;
+        border-radius: 15px; /* Asegura que los bordes se vean bien sin la imagen al lado */
     }
 
     h2 {
@@ -284,8 +274,8 @@ textarea::placeholder {
 }
 
 @media (max-width: 480px) {
-    .form-content {
-        padding: 25px;
+    form.form-with-image {
+        padding: 25px; /* Ajuste de padding para pantallas muy pequeñas */
     }
 
     h2 {
@@ -305,12 +295,20 @@ textarea::placeholder {
         font-size: 13px;
         gap: 10px;
     }
+}
+
+/* Media query para pantallas más grandes (donde queremos mostrar la imagen) */
+@media (min-width: 769px) {
+    form.form-with-image {
+        flex-direction: row-reverse; /* Asegura la imagen a la derecha en pantallas grandes */
+        padding: 0; /* El padding se maneja en las sub-secciones */
+        align-items: stretch; /* Estirar para que coincida la altura */
+    }
 
     .image-side {
-        padding: 15px; /* Reduce el padding en el contenedor de la imagen para móviles más pequeños */
+        display: flex; /* Muestra la imagen en pantallas mayores de 768px */
     }
 
-    .form-image {
-        max-width: 70%; /* Incluso más pequeña en móviles muy pequeños */
-    }
+    /* Los border-radius para image-side y form-content ya están definidos para escritorio
+       directamente en sus selectores arriba, lo que simplifica un poco aquí. */
 }
